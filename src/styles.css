@@ -30,22 +30,22 @@ body {
 }
 
 #app {
-
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .swiper {
-    width: 40%;
-    height: 100%;
+    width: 60vh;
+    height: 90vh;
 }
 
 .swiper-slide {
-
+    display: flex;
     align-items: center;
-
+    justify-content: center;
     border-radius: 18px;
-    font-size: 14px;
+    font-size: 22px;
     font-weight: bold;
     color: #fff;
 }
@@ -88,4 +88,11 @@ body {
 
 .swiper-slide:nth-child(10n) {
     background-color: rgb(54, 94, 77);
+}
+
+
+.optBtn {
+    color: #f1f1f1 !important;
+    margin-top: 1% !important;
+    border-color: white;
 }
