@@ -96,3 +96,11 @@ body {
     margin-top: 1% !important;
     border-color: white;
 }
+
+.header{
+    color: gray;
+}
+
+.logoText{
+    color: purple;
+}
