@@ -31,38 +31,40 @@ const Quiz = ({ category, onMainMenu }) => {
     const allAnswered = questions.every((question) => question.isAnswered);
 
     return (
-        <Box container alignContent="center">
-            <Swiper
-            effect={"cards"}
-            modules={[EffectCards, Keyboard]}
-            className="mySwiper"
-            keyboard={{
-                enabled: true,
-            }}
-            pagination={{
-                clickable: true,
-            }}
-        >
+        <Box className={"quizGame"}>
+            <Box container alignContent="center">
+                <Swiper
+                effect={"cards"}
+                modules={[EffectCards, Keyboard]}
+                className="mySwiper"
+                keyboard={{
+                    enabled: true,
+                }}
+                pagination={{
+                    clickable: true,
+                }}
+            >
 
-            {questions.map((question, index) => (
-                <SwiperSlide>
-                <Question
-                    key={index}
-                    question={question}
-                    onAnswer={(isCorrect) => handleAnswer(index, isCorrect)}
-                />
-                </SwiperSlide>
-            ))}
+                {questions.map((question, index) => (
+                    <SwiperSlide>
+                    <Question
+                        key={index}
+                        question={question}
+                        onAnswer={(isCorrect) => handleAnswer(index, isCorrect)}
+                    />
+                    </SwiperSlide>
+                ))}
 
-            {allAnswered && (
-                <div>
-                    <p>
-                        Тест завершен! Ваш результат: {questions.filter((question) => question.isCorrect).length} из {questions.length}
-                    </p>
-                    <button onClick={onMainMenu}>Вернуться в главное меню</button>
-                </div>
-            )}
-            </Swiper>
+                {allAnswered && (
+                    <div>
+                        <p>
+                            Тест завершен! Ваш результат: {questions.filter((question) => question.isCorrect).length} из {questions.length}
+                        </p>
+                        <button onClick={onMainMenu}>Вернуться в главное меню</button>
+                    </div>
+                )}
+                </Swiper>
+            </Box>
         </Box>
     );
 };

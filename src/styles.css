@@ -104,3 +104,8 @@ body {
 .logoText{
     color: purple;
 }
+
+.quizGame {
+    text-align: center;
+    background: white;
+}
