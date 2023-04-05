@@ -8,14 +8,16 @@ import {
     InputLabel,
     MenuItem,
     Select,
-    Grid
+    Grid, Autocomplete, Divider, Container
 } from "@mui/material";
+import { Link } from 'react-router-dom';
 import Leaderboard from "./Leaderboard";
 import {Typography} from "@mui/material";
 import "../styles.css";
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/900.css'
 
-
-const MainMenu = ({ onStartQuiz, onLeaderboard }) => {
+const MainMenu = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
 
     const categories = [
@@ -24,58 +26,54 @@ const MainMenu = ({ onStartQuiz, onLeaderboard }) => {
         // добавьте другие категории при необходимости
     ];
 
-    const startQuiz = () => {
-        if (selectedCategory) {
-            onStartQuiz(selectedCategory);
-        } else {
-            alert('Пожалуйста, выберите тему');
-        }
-    };
-
     return (
         <>
-        <Box sx={{minWidth: 120, p: 2, background:'#f7f5ff'}} container height="100vh">
-            <AppBar position="static" sx={{ borderRadius: "25px", background:'#f7f5ff', padding: 1}}>
-                <Toolbar className="header">
-                    <Grid container spacing={2}>
-                        <Grid item xs={8} edge="start" justify="flex-start">
-                            <Typography className="logoText" sx={{paddingLeft: 2, fontWeight: 700}} align="left" variant="h5">MQ</Typography>
+
+            <Box sx={{minWidth: 120, background:'#f7f5ff'}} container height="100vh">
+                <Container maxWidth="lg">
+                <AppBar position="static" sx={{ borderRadius: "25px", background:'#f7f5ff', padding: 1}}>
+                    <Toolbar className="header">
+                        <Grid container spacing={2}>
+                            <Grid item xs={8} edge="start" justify="flex-start">
+                                <Typography className="logoText" sx={{paddingLeft: 2, fontWeight: 700}} align="left" variant="h5">MQ</Typography>
+                            </Grid>
+                            <Grid display="flex" item xs={4} justifyContent="flex-end" style={{paddingRight: 2}}>
+                                <Button color="inherit">О Нас</Button>
+                                <Button color="inherit">Связаться</Button>
+                                <Button color="inherit">Помощь</Button>
+                            </Grid>
+                            <Divider variant="middle" />
                         </Grid>
-                        <Grid display="flex" item xs={4} justifyContent="flex-end" style={{paddingRight: 2}}>
-                            <Button color="inherit">О Нас</Button>
-                            <Button color="inherit">Связаться</Button>
-                            <Button color="inherit">Помощь</Button>
+                    </Toolbar>
+                </AppBar>
+                    <Grid container style={{height:"80vh", alignItems: "center"}}>
+                        <Grid item xs={6}>
+                            <Typography variant="h2" style={{textAlign:"left", fontFamily:"inter"}}>
+                                Пройди тест уже <br/> <span style={{fontWeight:"bold", textDecoration: 'wavy', color:"#E23A1EFF"}}>сейчас</span>
+                            </Typography>
+                            <Typography variant="subtitle1" style={{color: "#808080", marginBottom: "2%", marginTop: "1%"}}>
+                                Это абсолютно бесплатно!
+                            </Typography>
+                            <FormControl id="outlined-select" label="Select" sx={{minWidth: 300}} >
+                                <InputLabel id="category-select-label">Выбрать тему теста:</InputLabel>
+                                <Select label="Выбрать тему теста:" labelID="category-select-label" id="category-select" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                                    {categories.map((category) => (
+                                        <MenuItem value={category.value}>
+                                            <em>{category.label}</em>
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <Link to={`/quiz/${selectedCategory}`} style={{textDecoration: "none"}}>
+                                <Button variant='contained' style={{paddingBottom: 15, paddingTop: 15, marginLeft: 15, background:'#e23a1e', textDecoration:'none'}}>Начать тест</Button>
+                            </Link>
+                        </Grid>
+                        <Grid item xs={6} display="flex" justifyContent="flex-end">
+                            <img src="hero_girl.png" alt={"Привет!"} maxWidth="100%" style={{maxWidth: "50vh"}}/>
+                        </Grid>
                     </Grid>
-                    </Grid>
-                </Toolbar>
-            </AppBar>
-            <Grid container style={{height:"80vh", alignItems: "center"}}>
-                <Grid item xs={6} style={{paddingLeft: 100}}>
-                    <Typography variant="h2" style={{textAlign:"left"}}>
-                        Пройди тест
-                        уже сейчас
-                    </Typography>
-                    <Typography variant="subtitle1" style={{color: "#808080", marginBottom: "1%"}}>
-                        Это абсолютно бесплатно!
-                    </Typography>
-                    <FormControl variant="outlined" sx={{minWidth: 300}}>
-                        <InputLabel htmlFor="category-select-label">Тема теста:</InputLabel>
-                        <Select labelID="category-select-label" id="category-select" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-                            <MenuItem value="Тема теста:"></MenuItem>
-                            {categories.map((category) => (
-                                <MenuItem value={category.value}>
-                                    <em>{category.label}</em>
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                    <Button variant='contained' onClick={startQuiz} style={{paddingBottom: 15, paddingTop: 15, marginLeft: 15, background:'#e23a1e'}}>Начать тест</Button>
-                </Grid>
-                <Grid item xs={6}>
-                    <img src="hero_girl.png" alt={"Привет!"} width="1024" style={{margin: -100}}/>
-                </Grid>
-            </Grid>
-        </Box>
+                </Container>
+            </Box>
         </>
     );
 };

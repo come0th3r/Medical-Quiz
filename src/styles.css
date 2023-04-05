@@ -36,8 +36,8 @@ body {
 }
 
 .swiper {
-    width: 60vh;
-    height: 90vh;
+    width: 50vh;
+    height: 70vh;
 }
 
 .swiper-slide {
@@ -107,5 +107,6 @@ body {
 
 .quizGame {
     text-align: center;
-    background: white;
+    background: #f7f5ff;
+    height: 100vh;
 }
