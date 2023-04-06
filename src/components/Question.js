@@ -35,6 +35,7 @@ const Question = ({ question, onAnswer }) => {
                 {question.options.map((option, index) => (
                     <div key={index}>
                         <Button
+                            sx={{color: 'white', minWidth: 300}}
                             variant="outlined"
                             className="optBtn"
                             style={getOptionStyle(index)}
