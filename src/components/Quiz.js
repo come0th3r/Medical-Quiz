@@ -51,6 +51,7 @@ const Quiz = () => {
         }
     };
 
+
     const resultStyles = {
         opacity: showResults ? 1 : 0,
         transform: showResults ? 'translateY(-100%)' : 'translateY(0)',
@@ -102,7 +103,7 @@ const Quiz = () => {
                                 <p>
                                     Тест завершен! Ваш результат: {questions.filter((question) => question.isCorrect).length} из {questions.length}
                                 </p>
-                                <button onClick={() => navigate('/')}>Вернуться в главное меню 🏠</button>
+                                <button onClick={() => window.location.href = "/"}>Вернуться в главное меню 🏠</button>
                             </div>
                         )}
                     </Swiper>

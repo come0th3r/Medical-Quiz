@@ -34,10 +34,10 @@ const MainMenu = () => {
                 <AppBar position="static" sx={{ borderRadius: "25px", background:'#f7f5ff', padding: 1}}>
                     <Toolbar className="header">
                         <Grid container spacing={2}>
-                            <Grid item xs={8} edge="start" justify="flex-start">
+                            <Grid item xs={4} edge="start" justify="flex-start">
                                 <Typography className="logoText" sx={{paddingLeft: 2, fontWeight: 700}} align="left" variant="h5">MQ</Typography>
                             </Grid>
-                            <Grid display="flex" item xs={4} justifyContent="flex-end" style={{paddingRight: 2}}>
+                            <Grid display="flex" item xs={8} justifyContent="flex-end" style={{paddingRight: 2}}>
                                 <Button color="inherit">О Нас</Button>
                                 <Button color="inherit">Связаться</Button>
                                 <Button color="inherit">Помощь</Button>
@@ -46,7 +46,7 @@ const MainMenu = () => {
                         </Grid>
                     </Toolbar>
                 </AppBar>
-                    <Grid container style={{height:"80vh", alignItems: "center"}}>
+                    <Grid container style={{height:"80vh", alignItems: "center", flexWrap: "wrap"}}>
                         <Grid item xs={6}>
                             <Typography variant="h2" style={{textAlign:"left", fontFamily:"inter"}}>
                                 Пройди тест уже <br/> <span style={{fontWeight:"bold", textDecoration: 'wavy', color:"#E23A1EFF"}}>сейчас</span>
